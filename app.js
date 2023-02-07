@@ -1,4 +1,5 @@
 let testCon = document.querySelector('.container')
+let correctAnswer = 0;
 
 let test = [
     {
@@ -29,9 +30,20 @@ testCon.addEventListener('click', e => {
     if(!document.querySelector('.mod')){
         console.error('Не тот класс')
     } else {
-        test[0].answers[idEl].selectAnswer = true
-        console.log(test[0].answers[idEl].selectAnswer);
+        test[0].answers[idEl].selectAnswer = !test[0].answers[idEl].selectAnswer
+        if(test[0].answers[idEl].selectAnswer === true) {
+            e.target.style.background = 'red'
+            e.target.style.color = 'white'
+            correctAnswer += 1
+        } else {
+            e.target.style.background = ''
+            e.target.style.color = ''
+            correctAnswer -= 1
+        }
+
     }
+
+    console.log(correctAnswer);
 })
 
 
